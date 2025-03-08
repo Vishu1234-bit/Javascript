@@ -7,12 +7,12 @@ export function isFunction(value) {
 }
 
 export function isObject(value) {
-  return typeof value === 'object';
+  return (typeof value === 'object' && value!==null)||typeof value === 'function';
 }
 
 export function isPlainObject(value) {
-  if(typeof value !== 'object' || value === null){
+  if(typeof value!== 'object' || value===null){
     return false;
   }
-  return Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null;
+  return Object.getPrototypeOf(value)===Object.prototype || Object.getPrototypeOf(value)===null;
 }
