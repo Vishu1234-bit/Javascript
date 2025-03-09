@@ -1,14 +1,19 @@
-function curry(fn){
-    return function curried(...args){
-        if(args.length>=fn.length){
-            return fn.apply(this,args)
-        }else{
-            return function(...nextargs){
-                return curried.apply(this,args.concat(nextargs))
-            }
-        }
+/**
+ * @param {Function} func
+ * @return {Function}
+ */
+export default function curry(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args); // ✅ Ensures `this` is preserved
+    } else {
+      return function (...nextArgs) {
+        return curried.apply(this, [...args, ...nextArgs]); // ✅ Pass `this` along
+      }.bind(this);
     }
+  };
 }
+
 function add(a,b,c){
     return a+b+c
 }
