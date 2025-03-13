@@ -3,9 +3,5 @@
  * @return {string}
  */
 String.prototype.replicate = function(times) {
-    let str='';
-    for(let i=0;i<times;i++){
-        str=str+this
-    };
-    return str;
+    return this.toString().repeat(times)
 }
