@@ -1,7 +1,7 @@
 Array.prototype.customGroupBy = function(callback){
     return this.reduce((acc,item)=>{
         const key = callback(item)
-        if(!acc.key){
+        if(!acc[key]){
             acc[key]=[]
         }
         acc[key].push(item);
