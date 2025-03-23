@@ -3,11 +3,8 @@
  * @return {boolean}
  */
 var isEmpty = function(obj) {
-    count=0;
-    for(let key in obj){
-        if(obj.hasOwnProperty(key)){
-            count+=1
-        }
+    if(Array.isArray(obj)){
+        return obj.length==0;
     }
-    return count==0;
+    return Object.keys(obj).length==0;
 };
